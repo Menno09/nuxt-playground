@@ -1,20 +1,10 @@
 <script lang="ts" setup>
-import { useMessageCenterStore } from '@/stores'
-
-const messageCenterStore = useMessageCenterStore()
-const config = useRuntimeConfig()
-
-const messageCenter = computed(() => messageCenterStore)
+	const config = useRuntimeConfig()
 </script>
 
 <template>
 	<div class="flex flex-col min-h-screen bg-white-300">
-		<MessageCenter
-			v-if="messageCenter.visible && messageCenter.type === 'error'"
-			:message="messageCenter.message"
-			:color="messageCenter.type"
-			@clear-message="() => messageCenter.$reset()"
-		/>
+
 		<div class="flex m-auto items-center">
 			<div class="w-fit">
 				<div class="mb-10 p-4">
@@ -32,14 +22,3 @@ const messageCenter = computed(() => messageCenterStore)
 	</div>
 </template>
 
-<style lang="postcss">
-html {
-	@apply text-black-200 font-inter;
-}
-
-.router-link,
-.router-link-exact-active {
-	@apply text-blue-200;
-	@apply font-black font-inter text-sm;
-}
-</style>
